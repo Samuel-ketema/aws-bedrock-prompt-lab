@@ -6,8 +6,7 @@ client = boto3.client(
     region_name="us-east-1"
 )
 
-def invoke_model(prompt):
-
+def invoke_model(prompt: str) -> str:
     body = json.dumps({
         "prompt": prompt,
         "max_tokens_to_sample": 300,
@@ -20,5 +19,4 @@ def invoke_model(prompt):
     )
 
     result = json.loads(response["body"].read())
-
     return result["completion"]
